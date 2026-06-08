@@ -3,7 +3,7 @@
  * Plugin Name:       Gutenberg Utility Classes
  * Plugin URI:        https://github.com/muax3000/gutenberg-utility-classes
  * Description:       Responsive CSS-Hilfsklassen für den Gutenberg Block Editor
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 6.3
  * Requires PHP:      8.0
  * Author:            Maximilian Huhle
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('GUC_VERSION', '1.1.0');
+define('GUC_VERSION', '1.2.0');
 define('GUC_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('GUC_PLUGIN_URL', plugin_dir_url(__FILE__));
 
