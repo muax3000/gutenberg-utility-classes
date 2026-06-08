@@ -1,0 +1,1050 @@
+/**
+ * Gutenberg Utility Classes
+ * Version: 1.0.0
+ *
+ * Responsive utility classes for the WordPress Gutenberg Block Editor.
+ *
+ * Breakpoints (aligned with WordPress/Gutenberg core):
+ *   Mobile:  max-width: 599px
+ *   Tablet:  min-width: 600px and max-width: 781px
+ *   Desktop: min-width: 782px
+ */
+
+
+/* ==========[ 1. VISIBILITY ]========== */
+/*                                        */
+/* Hide or show elements per breakpoint.  */
+/* WordPress Core ships no built-in       */
+/* responsive visibility classes – there  */
+/* are no naming conflicts.               */
+/* ======================================= */
+
+
+/* --- Hide on a specific device --- */
+
+@media (max-width: 599px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 781px) {
+  .hide-on-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 782px) {
+  .hide-on-desktop {
+    display: none !important;
+  }
+}
+
+
+/* --- Show only on one device --- */
+
+/* .show-on-mobile: visible only on mobile, hidden on tablet + desktop */
+.show-on-mobile {
+  display: none !important;
+}
+
+@media (max-width: 599px) {
+  .show-on-mobile {
+    display: block !important;
+  }
+}
+
+/* .show-on-tablet: visible only on tablet, hidden on mobile + desktop */
+.show-on-tablet {
+  display: none !important;
+}
+
+@media (min-width: 600px) and (max-width: 781px) {
+  .show-on-tablet {
+    display: block !important;
+  }
+}
+
+/* .show-on-desktop: visible only on desktop, hidden on mobile + tablet */
+.show-on-desktop {
+  display: none !important;
+}
+
+@media (min-width: 782px) {
+  .show-on-desktop {
+    display: block !important;
+  }
+}
+
+
+/* ==========[ 2. STACKING ]========== */
+/*                                      */
+/* Force flex-direction: column on      */
+/* layout containers per breakpoint.    */
+/*                                      */
+/* Targets:                             */
+/*   .wp-block-columns                  */
+/*   .wp-block-group.is-layout-flex     */
+/*   .wp-block-group.is-layout-row      */
+/*                                      */
+/* Note: Gutenberg natively stacks      */
+/* .wp-block-columns below ~600 px.     */
+/* !important overrides core behaviour  */
+/* where needed.                        */
+/*                                      */
+/* Children of a stacked container get  */
+/* width/flex-basis: 100% so they fill  */
+/* the full available width.            */
+/* ====================================== */
+
+
+/* --- Stack on a single breakpoint --- */
+
+/* .stack-on-mobile: column layout only on mobile */
+@media (max-width: 599px) {
+  .stack-on-mobile.wp-block-columns,
+  .stack-on-mobile.wp-block-group.is-layout-flex,
+  .stack-on-mobile.wp-block-group.is-layout-row {
+    flex-direction: column !important;
+  }
+
+  .stack-on-mobile.wp-block-columns > *,
+  .stack-on-mobile.wp-block-group.is-layout-flex > *,
+  .stack-on-mobile.wp-block-group.is-layout-row > * {
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
+
+/* .stack-on-tablet: column layout only on tablet */
+@media (min-width: 600px) and (max-width: 781px) {
+  .stack-on-tablet.wp-block-columns,
+  .stack-on-tablet.wp-block-group.is-layout-flex,
+  .stack-on-tablet.wp-block-group.is-layout-row {
+    flex-direction: column !important;
+  }
+
+  .stack-on-tablet.wp-block-columns > *,
+  .stack-on-tablet.wp-block-group.is-layout-flex > *,
+  .stack-on-tablet.wp-block-group.is-layout-row > * {
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
+
+/* .stack-on-desktop: column layout only on desktop */
+@media (min-width: 782px) {
+  .stack-on-desktop.wp-block-columns,
+  .stack-on-desktop.wp-block-group.is-layout-flex,
+  .stack-on-desktop.wp-block-group.is-layout-row {
+    flex-direction: column !important;
+  }
+
+  .stack-on-desktop.wp-block-columns > *,
+  .stack-on-desktop.wp-block-group.is-layout-flex > *,
+  .stack-on-desktop.wp-block-group.is-layout-row > * {
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
+
+
+/* --- Stack from a breakpoint upward --- */
+
+/* .stack-from-mobile: always stacked – applies to all breakpoints */
+.stack-from-mobile.wp-block-columns,
+.stack-from-mobile.wp-block-group.is-layout-flex,
+.stack-from-mobile.wp-block-group.is-layout-row {
+  flex-direction: column !important;
+}
+
+.stack-from-mobile.wp-block-columns > *,
+.stack-from-mobile.wp-block-group.is-layout-flex > *,
+.stack-from-mobile.wp-block-group.is-layout-row > * {
+  width: 100% !important;
+  flex-basis: 100% !important;
+}
+
+/* .stack-from-tablet: stacked on tablet + desktop; row on mobile */
+@media (min-width: 600px) {
+  .stack-from-tablet.wp-block-columns,
+  .stack-from-tablet.wp-block-group.is-layout-flex,
+  .stack-from-tablet.wp-block-group.is-layout-row {
+    flex-direction: column !important;
+  }
+
+  .stack-from-tablet.wp-block-columns > *,
+  .stack-from-tablet.wp-block-group.is-layout-flex > *,
+  .stack-from-tablet.wp-block-group.is-layout-row > * {
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
+
+/* .stack-from-desktop: stacked on desktop only; row on mobile + tablet.
+   Note: .stack-from-desktop and .stack-on-desktop are functionally
+   identical. Both are provided for semantic clarity – "from-desktop"
+   reads naturally when composing breakpoint-progressive utilities. */
+@media (min-width: 782px) {
+  .stack-from-desktop.wp-block-columns,
+  .stack-from-desktop.wp-block-group.is-layout-flex,
+  .stack-from-desktop.wp-block-group.is-layout-row {
+    flex-direction: column !important;
+  }
+
+  .stack-from-desktop.wp-block-columns > *,
+  .stack-from-desktop.wp-block-group.is-layout-flex > *,
+  .stack-from-desktop.wp-block-group.is-layout-row > * {
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
+
+
+/* ==========[ 3. WIDTH UTILITIES ]========== */
+/*                                             */
+/* Control column widths per breakpoint.       */
+/* Gutenberg sets column widths as inline      */
+/* flex-basis styles, so !important is         */
+/* required to override them.                  */
+/*                                             */
+/* Schema: .width-{value}-{breakpoint}         */
+/* Targets: .wp-block-column and general       */
+/*           block elements                    */
+/*                                             */
+/* Values: 10 20 25 30 33 40 50 60 66          */
+/*          70 75 80 90 100                     */
+/* Special: auto                               */
+/* ============================================ */
+
+
+/* --- Mobile widths (max-width: 599px) --- */
+
+@media (max-width: 599px) {
+
+  .width-10-mobile {
+    width: 10% !important;
+    flex-basis: 10% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-20-mobile {
+    width: 20% !important;
+    flex-basis: 20% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-25-mobile {
+    width: 25% !important;
+    flex-basis: 25% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-30-mobile {
+    width: 30% !important;
+    flex-basis: 30% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-33-mobile {
+    width: 33% !important;
+    flex-basis: 33% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-40-mobile {
+    width: 40% !important;
+    flex-basis: 40% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-50-mobile {
+    width: 50% !important;
+    flex-basis: 50% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-60-mobile {
+    width: 60% !important;
+    flex-basis: 60% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-66-mobile {
+    width: 66% !important;
+    flex-basis: 66% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-70-mobile {
+    width: 70% !important;
+    flex-basis: 70% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-75-mobile {
+    width: 75% !important;
+    flex-basis: 75% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-80-mobile {
+    width: 80% !important;
+    flex-basis: 80% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-90-mobile {
+    width: 90% !important;
+    flex-basis: 90% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-100-mobile {
+    width: 100% !important;
+    flex-basis: 100% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-auto-mobile {
+    width: auto !important;
+    flex-basis: auto !important;
+  }
+
+}
+
+
+/* --- Tablet widths (min-width: 600px and max-width: 781px) --- */
+
+@media (min-width: 600px) and (max-width: 781px) {
+
+  .width-10-tablet {
+    width: 10% !important;
+    flex-basis: 10% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-20-tablet {
+    width: 20% !important;
+    flex-basis: 20% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-25-tablet {
+    width: 25% !important;
+    flex-basis: 25% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-30-tablet {
+    width: 30% !important;
+    flex-basis: 30% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-33-tablet {
+    width: 33% !important;
+    flex-basis: 33% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-40-tablet {
+    width: 40% !important;
+    flex-basis: 40% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-50-tablet {
+    width: 50% !important;
+    flex-basis: 50% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-60-tablet {
+    width: 60% !important;
+    flex-basis: 60% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-66-tablet {
+    width: 66% !important;
+    flex-basis: 66% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-70-tablet {
+    width: 70% !important;
+    flex-basis: 70% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-75-tablet {
+    width: 75% !important;
+    flex-basis: 75% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-80-tablet {
+    width: 80% !important;
+    flex-basis: 80% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-90-tablet {
+    width: 90% !important;
+    flex-basis: 90% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-100-tablet {
+    width: 100% !important;
+    flex-basis: 100% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-auto-tablet {
+    width: auto !important;
+    flex-basis: auto !important;
+  }
+
+}
+
+
+/* --- Desktop widths (min-width: 782px) --- */
+
+@media (min-width: 782px) {
+
+  .width-10-desktop {
+    width: 10% !important;
+    flex-basis: 10% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-20-desktop {
+    width: 20% !important;
+    flex-basis: 20% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-25-desktop {
+    width: 25% !important;
+    flex-basis: 25% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-30-desktop {
+    width: 30% !important;
+    flex-basis: 30% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-33-desktop {
+    width: 33% !important;
+    flex-basis: 33% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-40-desktop {
+    width: 40% !important;
+    flex-basis: 40% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-50-desktop {
+    width: 50% !important;
+    flex-basis: 50% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-60-desktop {
+    width: 60% !important;
+    flex-basis: 60% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-66-desktop {
+    width: 66% !important;
+    flex-basis: 66% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-70-desktop {
+    width: 70% !important;
+    flex-basis: 70% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-75-desktop {
+    width: 75% !important;
+    flex-basis: 75% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-80-desktop {
+    width: 80% !important;
+    flex-basis: 80% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-90-desktop {
+    width: 90% !important;
+    flex-basis: 90% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-100-desktop {
+    width: 100% !important;
+    flex-basis: 100% !important;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .width-auto-desktop {
+    width: auto !important;
+    flex-basis: auto !important;
+  }
+
+}
+
+
+/* ==========[ 4. ORDER (Flex Order) ]========== */
+/*                                               */
+/* Reorder flex children visually per            */
+/* breakpoint without changing DOM order.        */
+/* Useful for image-right-on-desktop /           */
+/* image-top-on-mobile layouts.                  */
+/*                                               */
+/* Schema: .order-{value}-{breakpoint}           */
+/* Values: 1 2 3 4 5                             */
+/* Special: first (= -1), last (= 99)            */
+/* Targets: .wp-block-column and flex children   */
+/* ================================================ */
+
+
+/* --- Mobile order (max-width: 599px) --- */
+
+@media (max-width: 599px) {
+
+  .order-first-mobile {
+    order: -1 !important;
+  }
+
+  .order-1-mobile {
+    order: 1 !important;
+  }
+
+  .order-2-mobile {
+    order: 2 !important;
+  }
+
+  .order-3-mobile {
+    order: 3 !important;
+  }
+
+  .order-4-mobile {
+    order: 4 !important;
+  }
+
+  .order-5-mobile {
+    order: 5 !important;
+  }
+
+  .order-last-mobile {
+    order: 99 !important;
+  }
+
+}
+
+
+/* --- Tablet order (min-width: 600px and max-width: 781px) --- */
+
+@media (min-width: 600px) and (max-width: 781px) {
+
+  .order-first-tablet {
+    order: -1 !important;
+  }
+
+  .order-1-tablet {
+    order: 1 !important;
+  }
+
+  .order-2-tablet {
+    order: 2 !important;
+  }
+
+  .order-3-tablet {
+    order: 3 !important;
+  }
+
+  .order-4-tablet {
+    order: 4 !important;
+  }
+
+  .order-5-tablet {
+    order: 5 !important;
+  }
+
+  .order-last-tablet {
+    order: 99 !important;
+  }
+
+}
+
+
+/* --- Desktop order (min-width: 782px) --- */
+
+@media (min-width: 782px) {
+
+  .order-first-desktop {
+    order: -1 !important;
+  }
+
+  .order-1-desktop {
+    order: 1 !important;
+  }
+
+  .order-2-desktop {
+    order: 2 !important;
+  }
+
+  .order-3-desktop {
+    order: 3 !important;
+  }
+
+  .order-4-desktop {
+    order: 4 !important;
+  }
+
+  .order-5-desktop {
+    order: 5 !important;
+  }
+
+  .order-last-desktop {
+    order: 99 !important;
+  }
+
+}
+
+
+/* ==========[ 5. SPACING UTILITIES ]========== */
+/*                                              */
+/* Remove gap, padding, or margin per           */
+/* breakpoint on Gutenberg layout blocks.       */
+/* ============================================= */
+
+
+/* --- No gap --- */
+
+@media (max-width: 599px) {
+  .no-gap-mobile.wp-block-columns {
+    gap: 0 !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 781px) {
+  .no-gap-tablet.wp-block-columns {
+    gap: 0 !important;
+  }
+}
+
+@media (min-width: 782px) {
+  .no-gap-desktop.wp-block-columns {
+    gap: 0 !important;
+  }
+}
+
+
+/* --- No padding --- */
+
+@media (max-width: 599px) {
+  .no-padding-mobile {
+    padding: 0 !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 781px) {
+  .no-padding-tablet {
+    padding: 0 !important;
+  }
+}
+
+@media (min-width: 782px) {
+  .no-padding-desktop {
+    padding: 0 !important;
+  }
+}
+
+
+/* --- No margin --- */
+
+@media (max-width: 599px) {
+  .no-margin-mobile {
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 781px) {
+  .no-margin-tablet {
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 782px) {
+  .no-margin-desktop {
+    margin: 0 !important;
+  }
+}
+
+
+/* ==========[ 6. TEXT ALIGNMENT ]========== */
+/*                                           */
+/* Control text alignment per breakpoint.    */
+/* Schema: .text-{align}-{breakpoint}        */
+/* Values: left, center, right               */
+/* =========================================== */
+
+
+/* --- Mobile text alignment (max-width: 599px) --- */
+
+@media (max-width: 599px) {
+
+  .text-left-mobile {
+    text-align: left !important;
+  }
+
+  .text-center-mobile {
+    text-align: center !important;
+  }
+
+  .text-right-mobile {
+    text-align: right !important;
+  }
+
+}
+
+
+/* --- Tablet text alignment (min-width: 600px and max-width: 781px) --- */
+
+@media (min-width: 600px) and (max-width: 781px) {
+
+  .text-left-tablet {
+    text-align: left !important;
+  }
+
+  .text-center-tablet {
+    text-align: center !important;
+  }
+
+  .text-right-tablet {
+    text-align: right !important;
+  }
+
+}
+
+
+/* --- Desktop text alignment (min-width: 782px) --- */
+
+@media (min-width: 782px) {
+
+  .text-left-desktop {
+    text-align: left !important;
+  }
+
+  .text-center-desktop {
+    text-align: center !important;
+  }
+
+  .text-right-desktop {
+    text-align: right !important;
+  }
+
+}
+
+
+/* ==========[ 7. SPACING UTILITIES ]========== */
+/*                                              */
+/* Responsive margin, padding, and gap          */
+/* utilities using WordPress Spacing Presets.   */
+/*                                              */
+/* Schema: .{typ}-{preset}-{breakpoint}         */
+/*   Types:       m (margin), p (padding), gap  */
+/*   Presets:     0, 20, 30, 40, 50, 60, 70, 80 */
+/*                (--wp--preset--spacing--*)    */
+/*   Breakpoints: mobile, tablet, desktop       */
+/*                                              */
+/* Preset values are resolved from the active   */
+/* theme's theme.json. !important overrides     */
+/* Gutenberg's inline spacing styles.           */
+/* ============================================= */
+
+
+/* --- Mobile spacing (max-width: 599px) --- */
+
+@media (max-width: 599px) {
+
+  /* Margin alle Seiten – Mobile */
+  .m-0-mobile  { margin: 0 !important; }
+  .m-20-mobile { margin: var(--wp--preset--spacing--20) !important; }
+  .m-30-mobile { margin: var(--wp--preset--spacing--30) !important; }
+  .m-40-mobile { margin: var(--wp--preset--spacing--40) !important; }
+  .m-50-mobile { margin: var(--wp--preset--spacing--50) !important; }
+  .m-60-mobile { margin: var(--wp--preset--spacing--60) !important; }
+  .m-70-mobile { margin: var(--wp--preset--spacing--70) !important; }
+  .m-80-mobile { margin: var(--wp--preset--spacing--80) !important; }
+
+  /* Margin horizontal (links + rechts) – Mobile */
+  .mx-0-mobile  { margin-left: 0 !important; margin-right: 0 !important; }
+  .mx-20-mobile { margin-left: var(--wp--preset--spacing--20) !important; margin-right: var(--wp--preset--spacing--20) !important; }
+  .mx-30-mobile { margin-left: var(--wp--preset--spacing--30) !important; margin-right: var(--wp--preset--spacing--30) !important; }
+  .mx-40-mobile { margin-left: var(--wp--preset--spacing--40) !important; margin-right: var(--wp--preset--spacing--40) !important; }
+  .mx-50-mobile { margin-left: var(--wp--preset--spacing--50) !important; margin-right: var(--wp--preset--spacing--50) !important; }
+  .mx-60-mobile { margin-left: var(--wp--preset--spacing--60) !important; margin-right: var(--wp--preset--spacing--60) !important; }
+  .mx-70-mobile { margin-left: var(--wp--preset--spacing--70) !important; margin-right: var(--wp--preset--spacing--70) !important; }
+  .mx-80-mobile { margin-left: var(--wp--preset--spacing--80) !important; margin-right: var(--wp--preset--spacing--80) !important; }
+
+  /* Margin vertikal (oben + unten) – Mobile */
+  .my-0-mobile  { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .my-20-mobile { margin-top: var(--wp--preset--spacing--20) !important; margin-bottom: var(--wp--preset--spacing--20) !important; }
+  .my-30-mobile { margin-top: var(--wp--preset--spacing--30) !important; margin-bottom: var(--wp--preset--spacing--30) !important; }
+  .my-40-mobile { margin-top: var(--wp--preset--spacing--40) !important; margin-bottom: var(--wp--preset--spacing--40) !important; }
+  .my-50-mobile { margin-top: var(--wp--preset--spacing--50) !important; margin-bottom: var(--wp--preset--spacing--50) !important; }
+  .my-60-mobile { margin-top: var(--wp--preset--spacing--60) !important; margin-bottom: var(--wp--preset--spacing--60) !important; }
+  .my-70-mobile { margin-top: var(--wp--preset--spacing--70) !important; margin-bottom: var(--wp--preset--spacing--70) !important; }
+  .my-80-mobile { margin-top: var(--wp--preset--spacing--80) !important; margin-bottom: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding alle Seiten – Mobile */
+  .p-0-mobile  { padding: 0 !important; }
+  .p-20-mobile { padding: var(--wp--preset--spacing--20) !important; }
+  .p-30-mobile { padding: var(--wp--preset--spacing--30) !important; }
+  .p-40-mobile { padding: var(--wp--preset--spacing--40) !important; }
+  .p-50-mobile { padding: var(--wp--preset--spacing--50) !important; }
+  .p-60-mobile { padding: var(--wp--preset--spacing--60) !important; }
+  .p-70-mobile { padding: var(--wp--preset--spacing--70) !important; }
+  .p-80-mobile { padding: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding horizontal (links + rechts) – Mobile */
+  .px-0-mobile  { padding-left: 0 !important; padding-right: 0 !important; }
+  .px-20-mobile { padding-left: var(--wp--preset--spacing--20) !important; padding-right: var(--wp--preset--spacing--20) !important; }
+  .px-30-mobile { padding-left: var(--wp--preset--spacing--30) !important; padding-right: var(--wp--preset--spacing--30) !important; }
+  .px-40-mobile { padding-left: var(--wp--preset--spacing--40) !important; padding-right: var(--wp--preset--spacing--40) !important; }
+  .px-50-mobile { padding-left: var(--wp--preset--spacing--50) !important; padding-right: var(--wp--preset--spacing--50) !important; }
+  .px-60-mobile { padding-left: var(--wp--preset--spacing--60) !important; padding-right: var(--wp--preset--spacing--60) !important; }
+  .px-70-mobile { padding-left: var(--wp--preset--spacing--70) !important; padding-right: var(--wp--preset--spacing--70) !important; }
+  .px-80-mobile { padding-left: var(--wp--preset--spacing--80) !important; padding-right: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding vertikal (oben + unten) – Mobile */
+  .py-0-mobile  { padding-top: 0 !important; padding-bottom: 0 !important; }
+  .py-20-mobile { padding-top: var(--wp--preset--spacing--20) !important; padding-bottom: var(--wp--preset--spacing--20) !important; }
+  .py-30-mobile { padding-top: var(--wp--preset--spacing--30) !important; padding-bottom: var(--wp--preset--spacing--30) !important; }
+  .py-40-mobile { padding-top: var(--wp--preset--spacing--40) !important; padding-bottom: var(--wp--preset--spacing--40) !important; }
+  .py-50-mobile { padding-top: var(--wp--preset--spacing--50) !important; padding-bottom: var(--wp--preset--spacing--50) !important; }
+  .py-60-mobile { padding-top: var(--wp--preset--spacing--60) !important; padding-bottom: var(--wp--preset--spacing--60) !important; }
+  .py-70-mobile { padding-top: var(--wp--preset--spacing--70) !important; padding-bottom: var(--wp--preset--spacing--70) !important; }
+  .py-80-mobile { padding-top: var(--wp--preset--spacing--80) !important; padding-bottom: var(--wp--preset--spacing--80) !important; }
+
+  /* Gap – Mobile (applies to flex/grid containers) */
+  .gap-0-mobile  { gap: 0 !important; }
+  .gap-20-mobile { gap: var(--wp--preset--spacing--20) !important; }
+  .gap-30-mobile { gap: var(--wp--preset--spacing--30) !important; }
+  .gap-40-mobile { gap: var(--wp--preset--spacing--40) !important; }
+  .gap-50-mobile { gap: var(--wp--preset--spacing--50) !important; }
+  .gap-60-mobile { gap: var(--wp--preset--spacing--60) !important; }
+  .gap-70-mobile { gap: var(--wp--preset--spacing--70) !important; }
+  .gap-80-mobile { gap: var(--wp--preset--spacing--80) !important; }
+
+}
+
+
+/* --- Tablet spacing (min-width: 600px and max-width: 781px) --- */
+
+@media (min-width: 600px) and (max-width: 781px) {
+
+  /* Margin alle Seiten – Tablet */
+  .m-0-tablet  { margin: 0 !important; }
+  .m-20-tablet { margin: var(--wp--preset--spacing--20) !important; }
+  .m-30-tablet { margin: var(--wp--preset--spacing--30) !important; }
+  .m-40-tablet { margin: var(--wp--preset--spacing--40) !important; }
+  .m-50-tablet { margin: var(--wp--preset--spacing--50) !important; }
+  .m-60-tablet { margin: var(--wp--preset--spacing--60) !important; }
+  .m-70-tablet { margin: var(--wp--preset--spacing--70) !important; }
+  .m-80-tablet { margin: var(--wp--preset--spacing--80) !important; }
+
+  /* Margin horizontal (links + rechts) – Tablet */
+  .mx-0-tablet  { margin-left: 0 !important; margin-right: 0 !important; }
+  .mx-20-tablet { margin-left: var(--wp--preset--spacing--20) !important; margin-right: var(--wp--preset--spacing--20) !important; }
+  .mx-30-tablet { margin-left: var(--wp--preset--spacing--30) !important; margin-right: var(--wp--preset--spacing--30) !important; }
+  .mx-40-tablet { margin-left: var(--wp--preset--spacing--40) !important; margin-right: var(--wp--preset--spacing--40) !important; }
+  .mx-50-tablet { margin-left: var(--wp--preset--spacing--50) !important; margin-right: var(--wp--preset--spacing--50) !important; }
+  .mx-60-tablet { margin-left: var(--wp--preset--spacing--60) !important; margin-right: var(--wp--preset--spacing--60) !important; }
+  .mx-70-tablet { margin-left: var(--wp--preset--spacing--70) !important; margin-right: var(--wp--preset--spacing--70) !important; }
+  .mx-80-tablet { margin-left: var(--wp--preset--spacing--80) !important; margin-right: var(--wp--preset--spacing--80) !important; }
+
+  /* Margin vertikal (oben + unten) – Tablet */
+  .my-0-tablet  { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .my-20-tablet { margin-top: var(--wp--preset--spacing--20) !important; margin-bottom: var(--wp--preset--spacing--20) !important; }
+  .my-30-tablet { margin-top: var(--wp--preset--spacing--30) !important; margin-bottom: var(--wp--preset--spacing--30) !important; }
+  .my-40-tablet { margin-top: var(--wp--preset--spacing--40) !important; margin-bottom: var(--wp--preset--spacing--40) !important; }
+  .my-50-tablet { margin-top: var(--wp--preset--spacing--50) !important; margin-bottom: var(--wp--preset--spacing--50) !important; }
+  .my-60-tablet { margin-top: var(--wp--preset--spacing--60) !important; margin-bottom: var(--wp--preset--spacing--60) !important; }
+  .my-70-tablet { margin-top: var(--wp--preset--spacing--70) !important; margin-bottom: var(--wp--preset--spacing--70) !important; }
+  .my-80-tablet { margin-top: var(--wp--preset--spacing--80) !important; margin-bottom: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding alle Seiten – Tablet */
+  .p-0-tablet  { padding: 0 !important; }
+  .p-20-tablet { padding: var(--wp--preset--spacing--20) !important; }
+  .p-30-tablet { padding: var(--wp--preset--spacing--30) !important; }
+  .p-40-tablet { padding: var(--wp--preset--spacing--40) !important; }
+  .p-50-tablet { padding: var(--wp--preset--spacing--50) !important; }
+  .p-60-tablet { padding: var(--wp--preset--spacing--60) !important; }
+  .p-70-tablet { padding: var(--wp--preset--spacing--70) !important; }
+  .p-80-tablet { padding: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding horizontal (links + rechts) – Tablet */
+  .px-0-tablet  { padding-left: 0 !important; padding-right: 0 !important; }
+  .px-20-tablet { padding-left: var(--wp--preset--spacing--20) !important; padding-right: var(--wp--preset--spacing--20) !important; }
+  .px-30-tablet { padding-left: var(--wp--preset--spacing--30) !important; padding-right: var(--wp--preset--spacing--30) !important; }
+  .px-40-tablet { padding-left: var(--wp--preset--spacing--40) !important; padding-right: var(--wp--preset--spacing--40) !important; }
+  .px-50-tablet { padding-left: var(--wp--preset--spacing--50) !important; padding-right: var(--wp--preset--spacing--50) !important; }
+  .px-60-tablet { padding-left: var(--wp--preset--spacing--60) !important; padding-right: var(--wp--preset--spacing--60) !important; }
+  .px-70-tablet { padding-left: var(--wp--preset--spacing--70) !important; padding-right: var(--wp--preset--spacing--70) !important; }
+  .px-80-tablet { padding-left: var(--wp--preset--spacing--80) !important; padding-right: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding vertikal (oben + unten) – Tablet */
+  .py-0-tablet  { padding-top: 0 !important; padding-bottom: 0 !important; }
+  .py-20-tablet { padding-top: var(--wp--preset--spacing--20) !important; padding-bottom: var(--wp--preset--spacing--20) !important; }
+  .py-30-tablet { padding-top: var(--wp--preset--spacing--30) !important; padding-bottom: var(--wp--preset--spacing--30) !important; }
+  .py-40-tablet { padding-top: var(--wp--preset--spacing--40) !important; padding-bottom: var(--wp--preset--spacing--40) !important; }
+  .py-50-tablet { padding-top: var(--wp--preset--spacing--50) !important; padding-bottom: var(--wp--preset--spacing--50) !important; }
+  .py-60-tablet { padding-top: var(--wp--preset--spacing--60) !important; padding-bottom: var(--wp--preset--spacing--60) !important; }
+  .py-70-tablet { padding-top: var(--wp--preset--spacing--70) !important; padding-bottom: var(--wp--preset--spacing--70) !important; }
+  .py-80-tablet { padding-top: var(--wp--preset--spacing--80) !important; padding-bottom: var(--wp--preset--spacing--80) !important; }
+
+  /* Gap – Tablet */
+  .gap-0-tablet  { gap: 0 !important; }
+  .gap-20-tablet { gap: var(--wp--preset--spacing--20) !important; }
+  .gap-30-tablet { gap: var(--wp--preset--spacing--30) !important; }
+  .gap-40-tablet { gap: var(--wp--preset--spacing--40) !important; }
+  .gap-50-tablet { gap: var(--wp--preset--spacing--50) !important; }
+  .gap-60-tablet { gap: var(--wp--preset--spacing--60) !important; }
+  .gap-70-tablet { gap: var(--wp--preset--spacing--70) !important; }
+  .gap-80-tablet { gap: var(--wp--preset--spacing--80) !important; }
+
+}
+
+
+/* --- Desktop spacing (min-width: 782px) --- */
+
+@media (min-width: 782px) {
+
+  /* Margin alle Seiten – Desktop */
+  .m-0-desktop  { margin: 0 !important; }
+  .m-20-desktop { margin: var(--wp--preset--spacing--20) !important; }
+  .m-30-desktop { margin: var(--wp--preset--spacing--30) !important; }
+  .m-40-desktop { margin: var(--wp--preset--spacing--40) !important; }
+  .m-50-desktop { margin: var(--wp--preset--spacing--50) !important; }
+  .m-60-desktop { margin: var(--wp--preset--spacing--60) !important; }
+  .m-70-desktop { margin: var(--wp--preset--spacing--70) !important; }
+  .m-80-desktop { margin: var(--wp--preset--spacing--80) !important; }
+
+  /* Margin horizontal (links + rechts) – Desktop */
+  .mx-0-desktop  { margin-left: 0 !important; margin-right: 0 !important; }
+  .mx-20-desktop { margin-left: var(--wp--preset--spacing--20) !important; margin-right: var(--wp--preset--spacing--20) !important; }
+  .mx-30-desktop { margin-left: var(--wp--preset--spacing--30) !important; margin-right: var(--wp--preset--spacing--30) !important; }
+  .mx-40-desktop { margin-left: var(--wp--preset--spacing--40) !important; margin-right: var(--wp--preset--spacing--40) !important; }
+  .mx-50-desktop { margin-left: var(--wp--preset--spacing--50) !important; margin-right: var(--wp--preset--spacing--50) !important; }
+  .mx-60-desktop { margin-left: var(--wp--preset--spacing--60) !important; margin-right: var(--wp--preset--spacing--60) !important; }
+  .mx-70-desktop { margin-left: var(--wp--preset--spacing--70) !important; margin-right: var(--wp--preset--spacing--70) !important; }
+  .mx-80-desktop { margin-left: var(--wp--preset--spacing--80) !important; margin-right: var(--wp--preset--spacing--80) !important; }
+
+  /* Margin vertikal (oben + unten) – Desktop */
+  .my-0-desktop  { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .my-20-desktop { margin-top: var(--wp--preset--spacing--20) !important; margin-bottom: var(--wp--preset--spacing--20) !important; }
+  .my-30-desktop { margin-top: var(--wp--preset--spacing--30) !important; margin-bottom: var(--wp--preset--spacing--30) !important; }
+  .my-40-desktop { margin-top: var(--wp--preset--spacing--40) !important; margin-bottom: var(--wp--preset--spacing--40) !important; }
+  .my-50-desktop { margin-top: var(--wp--preset--spacing--50) !important; margin-bottom: var(--wp--preset--spacing--50) !important; }
+  .my-60-desktop { margin-top: var(--wp--preset--spacing--60) !important; margin-bottom: var(--wp--preset--spacing--60) !important; }
+  .my-70-desktop { margin-top: var(--wp--preset--spacing--70) !important; margin-bottom: var(--wp--preset--spacing--70) !important; }
+  .my-80-desktop { margin-top: var(--wp--preset--spacing--80) !important; margin-bottom: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding alle Seiten – Desktop */
+  .p-0-desktop  { padding: 0 !important; }
+  .p-20-desktop { padding: var(--wp--preset--spacing--20) !important; }
+  .p-30-desktop { padding: var(--wp--preset--spacing--30) !important; }
+  .p-40-desktop { padding: var(--wp--preset--spacing--40) !important; }
+  .p-50-desktop { padding: var(--wp--preset--spacing--50) !important; }
+  .p-60-desktop { padding: var(--wp--preset--spacing--60) !important; }
+  .p-70-desktop { padding: var(--wp--preset--spacing--70) !important; }
+  .p-80-desktop { padding: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding horizontal (links + rechts) – Desktop */
+  .px-0-desktop  { padding-left: 0 !important; padding-right: 0 !important; }
+  .px-20-desktop { padding-left: var(--wp--preset--spacing--20) !important; padding-right: var(--wp--preset--spacing--20) !important; }
+  .px-30-desktop { padding-left: var(--wp--preset--spacing--30) !important; padding-right: var(--wp--preset--spacing--30) !important; }
+  .px-40-desktop { padding-left: var(--wp--preset--spacing--40) !important; padding-right: var(--wp--preset--spacing--40) !important; }
+  .px-50-desktop { padding-left: var(--wp--preset--spacing--50) !important; padding-right: var(--wp--preset--spacing--50) !important; }
+  .px-60-desktop { padding-left: var(--wp--preset--spacing--60) !important; padding-right: var(--wp--preset--spacing--60) !important; }
+  .px-70-desktop { padding-left: var(--wp--preset--spacing--70) !important; padding-right: var(--wp--preset--spacing--70) !important; }
+  .px-80-desktop { padding-left: var(--wp--preset--spacing--80) !important; padding-right: var(--wp--preset--spacing--80) !important; }
+
+  /* Padding vertikal (oben + unten) – Desktop */
+  .py-0-desktop  { padding-top: 0 !important; padding-bottom: 0 !important; }
+  .py-20-desktop { padding-top: var(--wp--preset--spacing--20) !important; padding-bottom: var(--wp--preset--spacing--20) !important; }
+  .py-30-desktop { padding-top: var(--wp--preset--spacing--30) !important; padding-bottom: var(--wp--preset--spacing--30) !important; }
+  .py-40-desktop { padding-top: var(--wp--preset--spacing--40) !important; padding-bottom: var(--wp--preset--spacing--40) !important; }
+  .py-50-desktop { padding-top: var(--wp--preset--spacing--50) !important; padding-bottom: var(--wp--preset--spacing--50) !important; }
+  .py-60-desktop { padding-top: var(--wp--preset--spacing--60) !important; padding-bottom: var(--wp--preset--spacing--60) !important; }
+  .py-70-desktop { padding-top: var(--wp--preset--spacing--70) !important; padding-bottom: var(--wp--preset--spacing--70) !important; }
+  .py-80-desktop { padding-top: var(--wp--preset--spacing--80) !important; padding-bottom: var(--wp--preset--spacing--80) !important; }
+
+  /* Gap – Desktop */
+  .gap-0-desktop  { gap: 0 !important; }
+  .gap-20-desktop { gap: var(--wp--preset--spacing--20) !important; }
+  .gap-30-desktop { gap: var(--wp--preset--spacing--30) !important; }
+  .gap-40-desktop { gap: var(--wp--preset--spacing--40) !important; }
+  .gap-50-desktop { gap: var(--wp--preset--spacing--50) !important; }
+  .gap-60-desktop { gap: var(--wp--preset--spacing--60) !important; }
+  .gap-70-desktop { gap: var(--wp--preset--spacing--70) !important; }
+  .gap-80-desktop { gap: var(--wp--preset--spacing--80) !important; }
+
+}

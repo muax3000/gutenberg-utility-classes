@@ -1,0 +1,226 @@
+/**
+ * Gutenberg Utility Classes – Admin Styles
+ * Version: 1.0.0
+ *
+ * Integrates cleanly with wp-admin.css. Relies on WordPress core
+ * classes (.widefat, .fixed, .striped, .nav-tab, .nav-tab-active,
+ * .regular-text, .notice, .notice-info) where possible.
+ */
+
+
+/* ==========[ WRAPPER ]========== */
+
+.guc-wrap {
+  max-width: 1200px;
+}
+
+
+/* ==========[ HEADER ]========== */
+
+.guc-wrap > h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.guc-version {
+  font-size: 12px;
+  font-weight: 400;
+  color: #646970;
+  background: #f0f0f1;
+  padding: 3px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+
+.guc-description {
+  font-size: 14px;
+  color: #3c434a;
+  margin: 8px 0 0;
+}
+
+
+/* ==========[ NOTICE ]========== */
+
+.guc-notice {
+  margin: 20px 0 0;
+}
+
+.guc-notice code {
+  font-size: 13px;
+}
+
+
+/* ==========[ SEARCH ]========== */
+
+.guc-search-wrap {
+  margin: 20px 0 0;
+}
+
+.guc-search-wrap input[type="search"] {
+  width: 100%;
+  max-width: 480px;
+}
+
+
+/* ==========[ TABS ]========== */
+
+.guc-tabs {
+  margin-top: 20px;
+}
+
+
+/* ==========[ PANELS ]========== */
+
+.guc-panel {
+  border: 1px solid #c3c4c7;
+  border-top: none;
+  background: #fff;
+}
+
+
+/* ==========[ TABLES ]========== */
+
+.guc-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.guc-table {
+  margin: 0;
+  border: none;
+  table-layout: auto;
+}
+
+.guc-table thead th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.guc-table code {
+  display: inline-block;
+  background: #f0f6fc;
+  color: #0550ae;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: Consolas, "Courier New", monospace;
+  white-space: nowrap;
+}
+
+.guc-no-results td {
+  text-align: center;
+  color: #646970;
+  font-style: italic;
+  padding: 24px !important;
+}
+
+
+/* ==========[ COPY BUTTON ]========== */
+
+.guc-copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  margin-left: 4px;
+  vertical-align: middle;
+  opacity: 0.55;
+  transition: opacity 0.15s ease;
+  line-height: 1;
+  border-radius: 2px;
+}
+
+.guc-copy-btn:hover {
+  opacity: 1;
+}
+
+.guc-copy-btn:focus-visible {
+  outline: 2px solid #2271b1;
+  outline-offset: 1px;
+}
+
+
+/* ==========[ SPACING NOTICE ]========== */
+
+.guc-spacing-notice {
+  margin: 16px 16px 0;
+}
+
+
+/* ==========[ EXAMPLES ]========== */
+
+.guc-examples {
+  margin-top: 36px;
+}
+
+.guc-examples > h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.guc-example {
+  border: 1px solid #c3c4c7;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.guc-example summary {
+  padding: 13px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+
+.guc-example summary::before {
+  content: '▶';
+  font-size: 9px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  color: #646970;
+}
+
+.guc-example[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.guc-example summary::-webkit-details-marker {
+  display: none;
+}
+
+.guc-example-body {
+  padding: 4px 16px 20px;
+  border-top: 1px solid #f0f0f1;
+}
+
+.guc-example-body p {
+  margin: 14px 0 8px;
+  line-height: 1.6;
+}
+
+.guc-example-body ol {
+  margin: 0 0 12px 20px;
+}
+
+.guc-example-body li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.guc-example-body code {
+  background: #f0f6fc;
+  color: #0550ae;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: Consolas, "Courier New", monospace;
+}
