@@ -78,7 +78,15 @@ class GUC_Admin {
         ?>
         <div class="wrap guc-wrap">
 
-            <h1>
+            <h1 class="guc-heading">
+                <img
+                    src="<?php echo esc_url( GUC_PLUGIN_URL . 'assets/img/icon.svg' ); ?>"
+                    alt=""
+                    class="guc-logo"
+                    width="36"
+                    height="36"
+                    aria-hidden="true"
+                >
                 <?php esc_html_e( 'Gutenberg Utility Classes', 'gutenberg-utility-classes' ); ?>
                 <span class="guc-version"><?php echo esc_html( GUC_VERSION ); ?></span>
             </h1>

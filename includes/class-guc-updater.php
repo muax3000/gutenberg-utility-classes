@@ -134,6 +134,9 @@ class GUC_Updater {
         $info->sections      = [
             'description' => wpautop( $release['body'] ?? __( 'Keine Release-Notizen verfügbar.', 'gutenberg-utility-classes' ) ),
         ];
+        $icon_url       = GUC_PLUGIN_URL . 'assets/img/icon.svg';
+        $info->icons    = [ '1x' => $icon_url, '2x' => $icon_url, 'svg' => $icon_url ];
+        $info->banners  = [];
 
         return $info;
     }

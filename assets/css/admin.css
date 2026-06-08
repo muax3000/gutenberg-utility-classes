@@ -17,11 +17,17 @@
 
 /* ==========[ HEADER ]========== */
 
-.guc-wrap > h1 {
+.guc-heading {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.guc-logo {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 8px;
 }
 
 .guc-version {
